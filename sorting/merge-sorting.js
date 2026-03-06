@@ -1,4 +1,4 @@
-function solution({ arr1, arr2 }) {
+function solution1({ arr1, arr2 }) {
   const arr = [];
   let i = 0;
   let j = 0;
@@ -23,4 +23,35 @@ function solution({ arr1, arr2 }) {
   }
 
   return arr;
+}
+
+export function solution2({ arr }) {
+  const result = [];
+  const end = arr.length;
+  const mid = parseInt(end / 2);
+
+  let i = 0;
+  let j = mid + 1;
+
+  while (i <= mid && j < end) {
+    if (arr[i] < arr[j]) {
+      result.push(arr[i]);
+      i++;
+    } else {
+      result.push(arr[j]);
+      j++;
+    }
+  }
+
+  while (i < mid) {
+    result.push(arr[i]);
+    i++;
+  }
+
+  while (j < end) {
+    result.push(arr[j]);
+    j++;
+  }
+
+  return result;
 }
