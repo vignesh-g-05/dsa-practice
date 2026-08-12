@@ -22,3 +22,23 @@ def recursion(n: int) -> str:
     compressed_str += str(digit_count) + curr_digit
 
     return compressed_str
+
+
+def loop(n: int) -> str:
+    output: str = "1"
+    for _ in range(n - 1):
+        rle: str = ""
+        curr_char: str = output[0]
+        count: int = 1
+        for i in range(1, len(output)):
+            c = output[i]
+            if c == curr_char:
+                count += 1
+                continue
+            rle += str(count) + curr_char
+            count = 1
+            curr_char = c
+        rle += str(count) + curr_char
+        output = rle
+
+    return output
